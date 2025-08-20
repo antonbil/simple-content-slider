@@ -1,0 +1,443 @@
+/* ==========================================================================
+   Basis Simple Content Slider (SCS) Stijlen (Algemeen)
+   ========================================================================== */
+
+/* Algemene container voor elke SCS-slider */
+.scs-slider-container {
+    width: 100%;
+    margin: 20px auto; /* Standaard marge als de slider direct in de content flow staat */
+    padding: 15px;
+    background-color: #f9f9f9;
+    border: 1px solid #e0e0e0;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    overflow: hidden; /* Belangrijk voor Slick */
+    position: relative; /* Voor positionering van interne elementen zoals pijlen/dots */
+}
+
+/* Individuele slides */
+.scs-slide {
+    padding: 20px; /* Standaard padding voor slides */
+    text-align: center;
+    box-sizing: border-box;
+}
+
+.scs-slide-content {
+    /* Ruimte voor specifieke content layout binnen een slide */
+}
+
+.scs-slide-subtitle {
+    display: block;
+    font-size: 0.9em;
+    color: #555;
+    margin-bottom: 8px;
+}
+
+.scs-slide-title { /* Dit is de span binnen de link/knop in jouw HTML */
+    display: block; /* Of inline, afhankelijk van gewenst effect */
+    font-size: 1.2em;
+    font-weight: bold;
+    color: #333;
+}
+
+/* Titel als onderdeel van een link */
+.scs-slide-link .scs-slide-title {
+    color: #0073aa; /* WordPress standaard linkkleur */
+    text-decoration: none;
+}
+
+.scs-slide-link:hover .scs-slide-title {
+    text-decoration: underline;
+    color: #005177;
+}
+
+/* Basis UL reset voor Slick slides */
+.scs-slides {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+/* ==========================================================================
+   Slick Carousel Specifieke Stijlen (Algemeen)
+   ========================================================================== */
+
+.scs-slider-container .slick-dots li button:before {
+    font-size: 10px;
+    color: #ccc; /* Kleur inactieve dots */
+    opacity: 0.75;
+}
+
+.scs-slider-container .slick-dots li.slick-active button:before {
+    color: #0073aa; /* Kleur actieve dot */
+    opacity: 1;
+}
+
+.scs-slider-container .slick-prev,
+.scs-slider-container .slick-next {
+    width: 30px;
+    height: 30px;
+    z-index: 10;
+}
+
+.scs-slider-container .slick-prev:before,
+.scs-slider-container .slick-next:before {
+    font-size: 24px;
+    color: #333;
+    opacity: 0.85;
+}
+
+.scs-slider-container .slick-prev:hover:before,
+.scs-slider-container .slick-next:hover:before {
+    opacity: 1;
+    color: #000;
+}
+
+.scs-slider-container .slick-prev {
+    left: 30px; /* Standaard positie vorige pijl */
+}
+
+.scs-slider-container .slick-next {
+    right: -10px; /* Standaard positie volgende pijl */
+}
+
+/* ==========================================================================
+   Specifieke SCS Stijlen binnen #page context (bijv. in de hoofd content area)
+   Deze overschrijven/verfijnen de algemene SCS stijlen.
+   ========================================================================== */
+
+/* Container en wrapper binnen #page */
+#page .scs-slider-container {
+    margin: 0px;
+    padding: 4px; /* Verfijnde padding */
+    background-color: var(--koorkerk-background-color-content); /* Specifieke achtergrond */
+    background-image: linear-gradient(rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.7)),
+            linear-gradient(var(--koorkerk-background-color-content), var(--koorkerk-background-color-content));
+    border: none; /* Verwijder algemene border indien nodig */
+    box-shadow: none; /* Verwijder algemene shadow indien nodig */
+}
+
+#page .scs-slider-wrapper { /* Dit is de wrapper die absoluut gepositioneerd wordt */
+    position: absolute;
+    top: -100px; /* Standaard verticale positie voor #page context */
+    left: 100%;  /* Standaard horizontale startpositie (schuift uit vanaf rechts) */
+    width: 380px; /* Standaard breedte voor #page context */
+    z-index: 10;
+    background-color: var(--koorkerk-background-color-content); /* Achtergrond van de popup-slider */
+    border: 1px solid #ccc; /* Border voor de popup-slider */
+    padding: 0px; /* Geen interne padding voor de wrapper zelf */
+    box-sizing: border-box;
+}
+
+/* Slides en content binnen #page context */
+#page .scs-slider-wrapper .scs-slide {
+    padding: 8px 10px; /* Compactere padding voor slides */
+}
+
+#page .scs-slider-wrapper .scs-slide-content {
+    padding: 0; /* Geen extra padding in de slide content div */
+}
+
+#page .scs-slider-wrapper .scs-slide-subtitle {
+    font-size: 80%;
+    color: var(--koorkerk-color-article-content);
+    margin-top: 0;
+    margin-bottom: 4px; /* Compactere marge */
+    line-height: 1.2;
+    padding: 0;
+}
+/* Titel binnen een link/knop in #page context */
+/* Dit combineert je eerdere regels voor .scs-slide-title binnen een <a> en binnen een .wp-block-button */
+#page .scs-slider-wrapper .wp-block-button .wp-block-button__link .scs-slide-title,
+#page .scs-slider-wrapper a .scs-slide-title { /* Fallback als .scs-slide-title direct in een <a> zit zonder .wp-block-button */
+    font-size: 80%;
+    color: var(--koorkerk-color-entry-title);
+    font-weight: bold;
+    display: inline; /* Voor compactheid binnen de knop/link */
+    padding: 0;
+    margin: 0;
+    line-height: 1.2;
+}
+
+/* WordPress knop styling binnen de slider in #page context */
+#page .scs-slider-wrapper .wp-block-button {
+    margin-top: 4px; /* Ruimte boven de knop */
+    margin-bottom: 0; /* Geen ruimte onder de knop */
+}
+
+/* Slick dots binnen #page context */
+#page .slick-dots li {
+    width: 10px; /* Compactere dot-container */
+    height: 10px; /* Compactere dot-container */
+}
+
+/* Verplaats de hele dot-navigatie iets naar links als dat nodig is */
+#page .slick-dotted.slick-slider {
+    left: -20px; /* Deze regel was aanwezig, beoordeel of je hem nog nodig hebt.
+                         Het kan de dots uitlijnen als de slider padding/marge heeft.
+                         Als je padding 0 hebt, is het mogelijk niet nodig. */
+}
+
+/* Kleur van de actieve dot (overerft van de algemene, maar hier om specificiteit te tonen indien nodig) */
+/* Deze regel combineert de selectors die je had voor actieve dots */
+#page .scs-slider-wrapper .slick-dots li.slick-active button::before,
+#page .scs-slider-container .slick-dots li.slick-active button::before { /* scs-slider-container voor het geval de wrapper niet de directe parent is */
+    color: var(--koorkerk-color-entry-title);
+    opacity: 1;
+}
+
+/* Deze regel leek een foutje te bevatten: #page.slick-dots (waarschijnlijk moest het #page .slick-dots zijn) */
+/* Als dit bedoeld was voor inactieve dots in #page context: */
+#page .slick-dots li button:before { /* Standaard (inactieve) dot kleur in #page context */
+    font-size: 10px; /* Behoud grootte */
+    /*color: #cc2c2c; /* Jouw specifieke kleur voor inactieve dots hier */
+    opacity: 0.75;
+}
+
+/* Specifieke basisstijl voor de slider wrapper met ronde hoeken */
+#page .scs-slider-wrapper {
+    /* NIEUW: Prominente rand en afgeronde hoeken */
+    border: 2px solid var(--koorkerk-color-entry-title);
+    border-radius: 8px;
+    overflow: hidden;
+    /* BELANGRIJK: Dit knipt de inhoud af naar de afgeronde hoeken */
+
+    /* Optioneel: Achtergrond en schaduw voor extra prominentie */
+    background-color: var(--koorkerk-background-color-content);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+
+    /* Behoud andere belangrijke eigenschappen */
+    position: absolute;
+    width: 380px;
+    z-index: 10;
+    box-sizing: border-box;
+}
+/* Specifieke basisstijl voor de slider wrapper op pagina met ID 216 */
+.page-id-216 #page .scs-slider-wrapper {
+    /* Jouw bestaande positionering voor .page-id-216 */
+    top: -100px;
+    left: 100%;
+
+    /* NIEUW: Prominente rand en afgeronde hoeken */
+    border: 2px solid var(--koorkerk-color-entry-title);
+    border-radius: 8px;
+    overflow: hidden;
+    /* BELANGRIJK: Dit knipt de inhoud af naar de afgeronde hoeken */
+
+    /* Optioneel: Achtergrond en schaduw voor extra prominentie */
+    background-color: var(--koorkerk-background-color-content);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+
+    /* Behoud andere belangrijke eigenschappen */
+    position: absolute;
+    width: 380px;
+    z-index: 10;
+    box-sizing: border-box;
+}
+/* ==========================================================================
+   Responsieve Aanpassingen voor .page-id-216 .scs-slider-wrapper
+   ========================================================================== */
+
+/* Groter dan 2000px (slider deels zichtbaar) */
+@media (min-width: 2000.02px) and (max-width: 2500px) { /* Preciezere range, of pas aan zoals je het had */
+    .page-id-216 #page .scs-slider-wrapper {
+        transform: translateX(-150px);
+    }
+}
+
+/* Tussen 1600px en 2000px (slider meer zichtbaar) */
+@media (min-width: 1600.02px) and (max-width: 2000px) {
+    .page-id-216 #page .scs-slider-wrapper {
+        transform: translateX(-350px);
+    }
+}
+
+/* Tussen 1350px en 1600px (slider bijna volledig zichtbaar, positie aangepast) */
+/* @media (min-width: 1350.02px) and (max-width: 1600px) { */
+    /* Jouw oude regel was @media (max-width: 1600px), wat overlapt met de volgende.
+       Ik ga ervan uit dat je hier de slider nog zichtbaar wilt hebben, en verbergt bij 1350px.
+       Als de 'display: none !important;' hier al moet gelden, pas dan aan.
+    */
+/* #page .scs-slider-wrapper {
+        transform: translateX(-550px);
+        top: -100px; /* Terug naar oorspronkelijke top of aangepast? */
+/* }
+} */
+
+/* Schermen kleiner dan 1600px: slider wordt verborgen */
+/* Deze regel omvat nu de breakpoints 1600px, 1350px, 1200px, en 767.98px waar je display:none had. */
+/* Dit is een brede range, je kunt het opsplitsen als de transform/top waarden nog relevant waren
+   VOORDAT het display:none werd. Maar als het doel display:none is, is één regel efficiënter. */
+@media (max-width: 1600px) { /* Vangt 1600, 1350, 1200, 767.98px etc. */
+    .page-id-216 #page .scs-slider-wrapper {
+        display: none !important;
+        /* De transform en top waarden hieronder zijn niet meer relevant als display: none is,
+           maar ik laat ze staan als je ze nodig had voor een range waar het NOG NIET none was. */
+        /* transform: translateX(-550px); */ /* Was voor max-width: 1600px & 1200px */
+        /* top: -100px; */ /* Was voor max-width: 1600px & 1350px */
+        /* top: 0px; */ /* Was voor max-width: 1200px */
+
+        /* Voor de allerkleinste schermen (onder 767.98px) had je ook nog position: static etc.
+           Als dat gedrag specifiek voor die range moet zijn, en anders dan alleen display:none,
+           heb je een aparte media query nodig. */
+    }
+}
+
+/* Specifieke aanpassing voor schermen kleiner dan 768px ALS het gedrag anders is dan alleen 'display: none' */
+/* Als de slider op deze breedte in de normale flow moet komen (en dus NIET display:none is): */
+/*
+@media (max-width: 767.98px) {
+    .page-id-216 .scs-slider-wrapper {
+        display: block !important; // Of flex, afhankelijk van hoe het eruit moet zien
+        position: static;
+        left: auto;
+        transform: none;
+        width: 100%;
+        margin-top: 20px;
+        top: auto;
+    }
+}
+*/
+/* ALS HET VERBORGEN MOET BLIJVEN (display: none), dan is de bovenstaande @media (max-width: 1600px) voldoende. */
+
+
+/* ==========================================================================
+   Pagina Specifieke Overrides (Voorbeeld: .page-id-10)
+   ========================================================================== */
+
+/* Specifieke positionering en stijl voor de slider wrapper op pagina met ID 10 */
+/* Let op: .page-id-10 #page .scs-slider-wrapper is specifieker dan #page .scs-slider-wrapper */
+.scs-slider-wrapper {
+    /* Overschrijf hier de #page .scs-slider-wrapper stijlen specifiek voor .page-id-10 */
+    top: 150px;       /* Aangepaste verticale positie */
+    left: 80%;        /* Aangepaste horizontale startpositie */
+
+    transform: none; /* Reset eventuele translateX van de algemene #page regels als deze niet van toepassing is hier */
+
+}
+#page .scs-slider-wrapper {
+    /* Overschrijf hier de #page .scs-slider-wrapper stijlen specifiek voor .page-id-10 */
+    top: 150px;
+    /* Aangepaste verticale positie */
+    left: 80%;
+    /* Aangepaste horizontale startpositie */
+
+    transform: none;
+    /* Reset eventuele translateX van de algemene #page regels als deze niet van toepassing is hier */
+
+}
+.page-id-216 #page .scs-slider-wrapper {
+    top: -100px;       /* Aangepaste verticale positie */
+    left: 100%;  
+    transform: translateX(-150px);
+}
+#page .scs-slider-wrapper {
+    /* Overschrijf hier de #page .scs-slider-wrapper stijlen specifiek voor .page-id-10 */
+    top: 150px;
+    /* Aangepaste verticale positie */
+    left: 80%;
+    /* Aangepaste horizontale startpositie */
+
+    transform: none;
+    /* Reset eventuele translateX van de algemene #page regels als deze niet van toepassing is hier */
+
+}
+@media (max-width: 2000px) {
+    .page-id-216 #page .scs-slider-wrapper {
+        top: -100px;
+            /* Aangepaste verticale positie */
+            left: 80%;
+            transform: translateX(-150px);
+    }
+}
+
+@media (max-width: 1600px) {
+    .page-id-216 #page .scs-slider-wrapper {
+        top: -100px;
+            /* Aangepaste verticale positie */
+            left: 60%;
+            transform: translateX(-150px);
+    }
+}
+
+@media (max-width: 1300px) {
+    #page .scs-slider-wrapper {
+            left: 60%;
+            /* Aangepaste horizontale startpositie */
+        }
+    .page-id-216 #page .scs-slider-wrapper {
+        top: -100px;
+        /* Aangepaste verticale positie */
+        left: 50%;
+        transform: translateX(-150px);
+    }
+}
+
+/* Verberg de .page-id-10 slider op dezelfde breakpoints als de algemene #page slider */
+@media (max-width: 1000px) {
+    .page-id-216 #page .scs-slider-wrapper {
+        display: none;
+    }
+}
+@media (max-width: 2000px) {
+    #page .scs-slider-wrapper {
+        left: 70%;
+        /* Aangepaste horizontale startpositie */
+    }
+}
+@media (max-width: 1600px) {
+    #page .scs-slider-wrapper {
+        left: 60%;
+        /* Aangepaste horizontale startpositie */
+    }
+}/* Verberg de .page-id-10 slider op dezelfde breakpoints als de algemene #page slider */
+@media (max-width: 1000px) {
+    #page .scs-slider-wrapper {
+        display: none;
+    }
+}
+@media (max-width: 2000px) {
+    #page .scs-slider-wrapper {
+        left: 70%;
+        /* Aangepaste horizontale startpositie */
+    }
+}
+@media (max-width: 1600px) {
+    #page .scs-slider-wrapper {
+        left: 60%;
+        /* Aangepaste horizontale startpositie */
+    }
+}/* Verberg de .page-id-10 slider op dezelfde breakpoints als de algemene #page slider */
+@media (max-width: 1200px) {
+    #page .scs-slider-wrapper {
+        display: none !important;
+    }
+}
+
+
+
+
+/* ==========================================================================
+   Algemene WordPress Knop Stijlen (die je had)
+   ========================================================================== */
+
+/* Stijl voor outline buttons in WordPress en Astra thema */
+.wp-block-button.is-style-outline .wp-block-button__link.wp-element-button,
+.wp-block-button.is-style-outline>.wp-block-button__link.wp-element-button, /* Variatie in WP output */
+.ast-outline-button {
+    border-color: var(--koorkerk-svg-background-color); /* Algemene border kleur voor outline buttons */
+    border-width: 2px; /* Dikkere border zoals je had voor niet-has-background */
+}
+
+/* Je had specifiek voor .page-id-10 de border-color uitgecommentarieerd.
+   Als dat de bedoeling is (dat .page-id-10 de algemene --koorkerk-svg-background-color NIET gebruikt
+   maar de standaard border kleur van de knop), dan hoef je hier niets extra's te doen,
+   omdat de bovenstaande regel al de border-color instelt.
+   Als je voor .page-id-10 een ANDERE border-color wilt, of GEEN, dan voeg je hier een override toe:
+*/
+/*
+.page-id-10 .wp-block-button.is-style-outline .wp-block-button__link.wp-element-button,
+.page-id-10 .wp-block-button.is-style-outline>.wp-block-button__link.wp-element-button,
+.page-id-10 .ast-outline-button {
+    border-color: transparent; // Of een andere specifieke kleur voor page-id-10
+}
+*/
