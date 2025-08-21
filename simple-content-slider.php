@@ -1,4 +1,3 @@
-php
 <?php
 /**
  * Plugin Name:       Simple Content Slider
